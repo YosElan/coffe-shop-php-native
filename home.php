@@ -3,7 +3,7 @@ session_start();
 
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     // Jika pengguna belum login, arahkan ke halaman login.php
-    header("Location: ../login.php");
+    header("Location: login.php");
     exit;
 }
 
@@ -39,10 +39,10 @@ include 'koneksi.php';
           <div class="mx-auto"></div>
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link text-white" href="home.php">Home</a>
+              <a class="nav-link text-white" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#">Data</a>
+              <a class="nav-link text-white" href="data.php">Data</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-white" href="#" data-toggle="modal" data-target="#adminModal">Management</a>
@@ -58,38 +58,37 @@ include 'koneksi.php';
   
   <!-- Main Content Area -->
   <div class="container mt-5 content-container">
-    <h2 class="text-center">Selamat datang, berikut data Stock</h2>
-    <table class="table mt-4">
-      <thead class="table-dark">
+    <h2 class="text-center">Selamat datang Silahkan lihat Menu-menu Kami</h2>
+    <div class="d-flex justify-content-end mb-3">
+    </div>
+    <div class="container">
+    <h2>Tabel Gambar</h2>
+    <table class="table ">
+      <thead>
         <tr>
-          <th scope="col">No</th>
-          <th scope="col">ID</th>
-          <th scope="col">Nama Menu</th>
-          <th scope="col">Harga</th>
-          <th scope="col">Stock</th>
+          <th>Gambar</th>
+          <th>Nama</th>
+          <th>Deskripsi</th>
         </tr>
       </thead>
       <tbody>
-        <?php
-        $no = 1;
-        $hasil = $koneksi->query("SELECT * FROM menu");
-        while ($row = $hasil->fetch_assoc()) {
-        ?>
         <tr>
-          <td><?= $no++; ?></td>
-          <td><?= $row['id']; ?></td>
-          <td><?= $row['nama_menu']; ?></td>
-          <td><?= $row['harga']; ?></td>
-          <td><?= $row['stock']; ?></td>
+          <td><img src="assets/gambar1.jpg" class="img-thumbnail" alt="Gambar 1" width="100"></td>
+          <td>Kopi ABC</td>
+          <td>Deskripsi Gambar 1</td>
         </tr>
-        <?php } ?>
+        <tr>
+          <td><img src="assets/gambar2.jpg" class="img-thumbnail" alt="Gambar 2" width="100"></td>
+          <td>Kopi Kapal Api</td>
+          <td>Deskripsi Gambar 2</td>
+        </tr>
+        <!-- Tambahkan baris lain sesuai kebutuhan -->
       </tbody>
     </table>
   </div>
 
-
-   <!-- Modal Admin -->
-   <div class="modal fade" id="adminModal" tabindex="-1" role="dialog" aria-labelledby="adminModalLabel" aria-hidden="true">
+  <!-- Modal Admin Alert -->
+  <div class="modal fade" id="adminModal" tabindex="-1" role="dialog" aria-labelledby="adminModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -108,11 +107,12 @@ include 'koneksi.php';
     </div>
   </div>
 
-  <!-- Menghubungkan dengan Bootstrap JS -->
+    
+<!-- Menghubungkan dengan Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     var nav = document.querySelector('nav');
 
